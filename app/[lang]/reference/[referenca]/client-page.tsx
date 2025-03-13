@@ -1,0 +1,184 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronRight, MapPin, Calendar, Building2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import Navigation from "@/app/[lang]/components/navigation";
+import Footer from "@/app/[lang]/components/footer";
+import { projects, type Project } from "@/app/[lang]/data/projects";
+import { useLanguage } from "@/lib/language-context";
+import type { Language } from "@/lib/translations";
+
+interface ProjectPageClientProps {
+  project: Project;
+  params: {
+    referenca: string;
+    lang: Language;
+  };
+}
+
+export default function ProjectPageClient({
+  project,
+  params,
+}: ProjectPageClientProps) {
+  const { t } = useLanguage();
+  const lang = params.lang;
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navigation />
+
+      {/* Breadcrumbs */}
+      <div className="bg-gray-100 py-3">
+        <div className="container px-4 md:px-6">
+          <div className="flex items-center text-sm text-gray-600">
+            <Link href={`/${lang}`} className="hover:text-red-600">
+              {t("home")}
+            </Link>
+            <ChevronRight className="h-4 w-4 mx-2" />
+            <Link href={`/${lang}/reference`} className="hover:text-red-600">
+              {t("references")}
+            </Link>
+            <ChevronRight className="h-4 w-4 mx-2" />
+            <span className="font-medium text-gray-900">{project.title}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Project Details */}
+      <article className="py-12">
+        <div className="container px-4 md:px-6">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Image Gallery */}
+            <div className="space-y-8">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+                <Image
+                  src={`/images/reference/${project.image}`}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  priority
+                  onError={(e) => {
+                    console.error(
+                      "Error loading reference image:",
+                      project.image
+                    );
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/dm-metal-hero.jpeg";
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Project Info */}
+            <div className="space-y-8">
+              <div>
+                <Badge className="mb-4 bg-red-600 hover:bg-red-700">
+                  {project.categoryName}
+                </Badge>
+                <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
+                <p className="text-lg text-gray-700">
+                  {project.fullDescription || project.description}
+                </p>
+              </div>
+
+              <div className="grid gap-4">
+                <div className="flex items-center text-gray-600">
+                  <MapPin className="h-5 w-5 mr-2" />
+                  <span>{project.location}</span>
+                </div>
+                <div className="flex items-center text-gray-600">
+                  <Calendar className="h-5 w-5 mr-2" />
+                  <span>{project.year}</span>
+                </div>
+                {project.client && (
+                  <div className="flex items-center text-gray-600">
+                    <Building2 className="h-5 w-5 mr-2" />
+                    <span>{project.client}</span>
+                  </div>
+                )}
+              </div>
+
+              {project.services && (
+                <div>
+                  <h2 className="text-xl font-semibold mb-4">
+                    {t("services")}
+                  </h2>
+                  <ul className="list-disc list-inside space-y-2 text-gray-700">
+                    {project.services.map((service, index) => (
+                      <li key={index}>{service}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="pt-8">
+                <Button size="lg" className="bg-red-600 hover:bg-red-700">
+                  {t("sendInquiry")}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      {/* Random Projects */}
+      <section className="py-16 bg-gray-50">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            {t("ourProjects")}
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects
+              .filter((p) => p.id !== project.id)
+              .sort(() => Math.random() - 0.5)
+              .slice(0, 3)
+              .map((project) => (
+                <Link
+                  key={project.id}
+                  href={`/${lang}/reference/${project.id}`}
+                  className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={`/images/reference/${project.image}`}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
+                      {project.categoryName}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="font-bold text-xl mb-2">{project.title}</h3>
+                    <p className="text-gray-700 mb-4">{project.description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-sm text-gray-600">
+                        <MapPin className="h-4 w-4 mr-1" />
+                        {project.location}
+                      </div>
+                      <span className="text-sm text-gray-600">
+                        {project.year}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href={`/${lang}/reference`}>
+              <Button size="lg" className="bg-red-600 hover:bg-red-700">
+                {t("viewAllProjects")}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
