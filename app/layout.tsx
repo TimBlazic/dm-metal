@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="sl" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
         <LanguageProvider>{children}</LanguageProvider>
       </body>
