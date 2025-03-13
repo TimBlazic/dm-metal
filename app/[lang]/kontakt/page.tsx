@@ -89,7 +89,7 @@ export default function ContactPage() {
                     href="mailto:damjan@dm-metal.eu"
                     className="text-red-600 hover:text-red-700 font-semibold"
                   >
-                    damjan@dmwmetal.eu
+                    damjan@dmmetal.eu
                   </a>
                 </div>
               </div>
