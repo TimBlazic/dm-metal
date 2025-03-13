@@ -226,7 +226,7 @@ export default function Home() {
         <section className="py-16 md:py-24">
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="relative h-[200px] w-[500px] rounded-lg overflow-hidden">
+              <div className="relative h-[200px] max-w-[500px] w-full rounded-lg overflow-hidden mx-auto">
                 <Image
                   src="/dm-metal-logo-no-background.png"
                   alt="About DM Metal"
