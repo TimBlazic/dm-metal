@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/app/[lang]/components/navigation";
 import Footer from "@/app/[lang]/components/footer";
@@ -160,13 +160,13 @@ export default function ServicePageClient({
             ))}
 
             {/* Features */}
-            <div className="grid sm:grid-cols-2 gap-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
               {serviceData.features?.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-gray-50 rounded-lg p-4 md:p-6 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <h2 className="text-xl font-bold mb-4 text-gray-900 border-b pb-2 border-gray-200">
+                  <h2 className="text-lg md:text-xl font-bold mb-4 text-gray-900 border-b pb-2 border-gray-200">
                     {feature.title[lang]}
                   </h2>
                   <ul className="space-y-3">
@@ -175,7 +175,9 @@ export default function ServicePageClient({
                         <div className="flex-shrink-0 h-5 w-5 rounded-full bg-red-100 flex items-center justify-center mt-1 mr-3">
                           <div className="h-2 w-2 rounded-full bg-red-600"></div>
                         </div>
-                        <span className="text-gray-700">{item}</span>
+                        <span className="text-gray-700 text-sm md:text-base">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -187,42 +189,34 @@ export default function ServicePageClient({
             <div className="mt-12">
               <div className="flex items-center mb-6">
                 <div className="h-px flex-1 bg-gray-200"></div>
-                <h2 className="text-2xl font-bold px-4">
+                <h2 className="text-xl md:text-2xl font-bold px-4">
                   {t("similarProjects")}
                 </h2>
                 <div className="h-px flex-1 bg-gray-200"></div>
               </div>
-              <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-auto">
                 {topProjects.map((project) => (
                   <Link
                     key={project.id}
                     href={`/${params.lang}/reference/${project.id}`}
                     className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
                   >
-                    <div className="relative h-56">
+                    <div className="relative h-48 md:h-56">
                       <Image
                         src={`/images/reference/${project.image}`}
                         alt={project.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        onError={(e) => {
-                          console.error(
-                            "Error loading project image:",
-                            project.image
-                          );
-                          const target = e.target as HTMLImageElement;
-                          target.src = "/images/dm-metal-hero.jpeg";
-                        }}
                       />
                       <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
                         {project.categoryName}
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="font-bold text-xl mb-3">
+                    <div className="p-4 md:p-6">
+                      <h3 className="font-bold text-lg md:text-xl mb-2">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 mb-4">
+                      <p className="text-gray-600 text-sm md:text-base mb-4">
                         {project.description}
                       </p>
                       <div className="inline-flex items-center text-red-600 font-medium group-hover:translate-x-1 transition-transform">
@@ -232,13 +226,6 @@ export default function ServicePageClient({
                     </div>
                   </Link>
                 ))}
-              </div>
-              <div className="text-center my-8">
-                <Link href={`/${params.lang}/projekti`}>
-                  <Button className="bg-red-600 hover:bg-red-700">
-                    {t("viewAllProjects")}
-                  </Button>
-                </Link>
               </div>
             </div>
           </div>
@@ -283,44 +270,54 @@ export default function ServicePageClient({
       </div>
 
       {/* Statistics Section */}
-      <section className="relative py-16 bg-gray-800">
-        <div className="container relative px-4 md:px-6">
+      <section className="bg-gray-800 py-16">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4 text-white">
               {t("byTheNumbers")}
             </h2>
             <div className="w-24 h-1 bg-red-600 mx-auto"></div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {/* Projekti */}
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50">
-              <div className="text-6xl font-bold text-red-600 mb-3">100+</div>
-              <div className="text-xl font-medium mb-2 text-white">
+            <div className="text-center p-6 rounded-2xl bg-gray-900/50">
+              <div className="text-5xl md:text-6xl font-bold text-red-600 mb-3">
+                100+
+              </div>
+              <div className="text-lg md:text-xl font-medium mb-2 text-white">
                 {t("successfulProjects")}
               </div>
-              <div className="text-base text-gray-400">{t("inLastYears")}</div>
+              <div className="text-sm md:text-base text-gray-400">
+                {t("inLastYears")}
+              </div>
             </div>
             {/* Kvadratura */}
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50">
-              <div className="text-6xl font-bold text-red-600 mb-3">
+            <div className="text-center p-6 rounded-2xl bg-gray-900/50">
+              <div className="text-5xl md:text-6xl font-bold text-red-600 mb-3">
                 50.000m²
               </div>
-              <div className="text-xl font-medium mb-2 text-white">
+              <div className="text-lg md:text-xl font-medium mb-2 text-white">
                 {t("constructionsBuilt")}
               </div>
-              <div className="text-base text-gray-400">{t("yearly")}</div>
+              <div className="text-sm md:text-base text-gray-400">
+                {t("yearly")}
+              </div>
             </div>
             {/* Izkušnje */}
-            <div className="text-center p-8 rounded-2xl bg-gray-900/50">
-              <div className="text-6xl font-bold text-red-600 mb-3">10+</div>
-              <div className="text-xl font-medium mb-2 text-white">
+            <div className="text-center p-6 rounded-2xl bg-gray-900/50">
+              <div className="text-5xl md:text-6xl font-bold text-red-600 mb-3">
+                10+
+              </div>
+              <div className="text-lg md:text-xl font-medium mb-2 text-white">
                 {t("yearsExperience")}
               </div>
-              <div className="text-base text-gray-400">{t("inMarket")}</div>
+              <div className="text-sm md:text-base text-gray-400">
+                {t("inMarket")}
+              </div>
             </div>
           </div>
           <div className="mt-12 text-center">
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto px-4">
               {t("numbersSpeak")}
             </p>
           </div>
@@ -328,53 +325,47 @@ export default function ServicePageClient({
       </section>
 
       {/* Related Projects */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="container px-4 md:px-6">
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center">
             {t("allProjects")}
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bottomProjects.map((project) => (
               <div
                 key={project.id}
                 className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
               >
-                <div className="relative h-56">
+                <div className="relative h-48 md:h-56">
                   <Image
                     src={`/images/reference/${project.image}`}
                     alt={project.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => {
-                      console.error(
-                        "Error loading project image:",
-                        project.image
-                      );
-                      const target = e.target as HTMLImageElement;
-                      target.src = "/images/dm-metal-hero.jpeg";
-                    }}
                   />
                   <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
                     {project.categoryName}
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-xl mb-3">{project.title}</h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="inline-flex items-center text-red-600 font-medium group-hover:translate-x-1 transition-transform">
-                    {t("readMore")}
-                    <ChevronRight className="h-4 w-4 ml-1" />
+                <div className="p-4 md:p-6">
+                  <h3 className="font-bold text-lg md:text-xl mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm md:text-base mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center text-sm text-gray-600">
+                      <MapPin className="h-4 w-4 mr-1" />
+                      {project.location}
+                    </div>
+                    <span className="text-sm text-gray-600">
+                      {project.year}
+                    </span>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link href={`/${params.lang}/projekti`}>
-              <Button className="bg-red-600 hover:bg-red-700">
-                {t("viewAllProjects")}
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
