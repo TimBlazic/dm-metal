@@ -186,7 +186,7 @@ export default function ServicePageClient({
             </div>
 
             {/* Gallery */}
-            <div className="mt-12">
+            <div className="my-12">
               <div className="flex items-center mb-6">
                 <div className="h-px flex-1 bg-gray-200"></div>
                 <h2 className="text-xl md:text-2xl font-bold px-4">
@@ -332,8 +332,9 @@ export default function ServicePageClient({
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {bottomProjects.map((project) => (
-              <div
+              <Link
                 key={project.id}
+                href={`/${params.lang}/reference/${project.id}`}
                 className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
               >
                 <div className="relative h-48 md:h-56">
@@ -364,11 +365,13 @@ export default function ServicePageClient({
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
