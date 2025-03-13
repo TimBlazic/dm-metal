@@ -14,12 +14,14 @@ import { servicesData, type ServiceContent, type Language } from "./data";
 function getRandomProjects(
   category: string,
   count: number,
-  excludeId?: number
+  excludeId?: number,
+  onlyFromCategory: boolean = true
 ): Project[] {
-  const categoryProjects = projects.filter(
-    (p) => p.category === category && p.id !== excludeId
-  );
-  const shuffled = [...categoryProjects].sort(() => 0.5 - Math.random());
+  let filteredProjects = onlyFromCategory
+    ? projects.filter((p) => p.category === category && p.id !== excludeId)
+    : projects.filter((p) => p.id !== excludeId);
+
+  const shuffled = [...filteredProjects].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, count);
 }
 
@@ -48,7 +50,7 @@ export default function ServicePageClient({
   const categoryMap: Record<string, string> = {
     "jeklene-konstrukcije": "jeklene-konstrukcije",
     "fasadni-elementi": "fasadni-elementi",
-    "jeklene-hise-in-nadstreski": "jeklene-konstrukcije",
+    "jeklene-hise-in-nadstreski": "jeklene-hise-in-nadstreski",
     "stresne-kritine": "stresne-kritine",
     "stresni-program": "stresne-kritine",
     "najem-opreme": "jeklene-konstrukcije",
@@ -56,8 +58,8 @@ export default function ServicePageClient({
   };
 
   const category = categoryMap[params.service] || "jeklene-konstrukcije";
-  const topProjects = getRandomProjects(category, 2);
-  const bottomProjects = getRandomProjects(category, 3);
+  const topProjects = getRandomProjects(category, 2, undefined, true);
+  const bottomProjects = getRandomProjects(category, 3, undefined, false);
 
   // Early return if no service data
   if (!serviceData || !serviceData.title || !serviceData.description) {
@@ -185,7 +187,9 @@ export default function ServicePageClient({
             <div className="mt-12">
               <div className="flex items-center mb-6">
                 <div className="h-px flex-1 bg-gray-200"></div>
-                <h2 className="text-2xl font-bold px-4">{t("ourProjects")}</h2>
+                <h2 className="text-2xl font-bold px-4">
+                  {t("similarProjects")}
+                </h2>
                 <div className="h-px flex-1 bg-gray-200"></div>
               </div>
               <div className="grid sm:grid-cols-1 lg:grid-cols-2 gap-8 mx-auto">
@@ -324,12 +328,11 @@ export default function ServicePageClient({
       </section>
 
       {/* Related Projects */}
-      <section className="bg-gray-50 py-16">
+      <section className="py-16 bg-gray-50">
         <div className="container px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{t("ourProjects")}</h2>
-            <div className="w-24 h-1 bg-red-600 mx-auto"></div>
-          </div>
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            {t("allProjects")}
+          </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {bottomProjects.map((project) => (
               <div

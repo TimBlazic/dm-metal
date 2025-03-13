@@ -31,6 +31,8 @@ export type TranslationKey =
   | "heroTitle"
   | "heroSubtitle"
   | "ourProjects"
+  | "similarProjects"
+  | "allProjects"
   | "contactUs"
   | "ourServices"
   | "servicesSubtitle"
@@ -158,7 +160,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       "Podjetje DM Metal d.o.o. je specializirano za izdelavo jeklenih konstrukcij, fasadnih elementov in strešnih kritin. Z dolgoletnimi izkušnjami in strokovnim znanjem zagotavljamo kakovostne rešitve za naše stranke.",
     aboutCompanyDesc2:
       "Naša ekipa izkušenih strokovnjakov je predana kakovosti, zanesljivosti in inovativnosti pri vsakem projektu, ne glede na njegovo velikost.",
-    readMore: "Več o nas",
+    readMore: "Več o storitvi",
     needSteelConstructions: "Potrebujete kovinske konstrukcije?",
     ctaDescription:
       "Kontaktirajte nas za brezplačno svetovanje in ponudbo. Naša ekipa vam bo pomagala najti optimalno rešitev za vaš projekt.",
@@ -181,6 +183,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     closed: "Zaprto",
     footerCompanyDescription:
       "Specializirani za kovinske konstrukcije, jeklene hiše in industrijsko opremo.",
+    similarProjects: "Podobni projekti",
+    allProjects: "Vsi projekti",
   },
   en: {
     contact: "Contact",
@@ -282,6 +286,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     closed: "Closed",
     footerCompanyDescription:
       "Specialized in metal constructions, steel houses and industrial equipment.",
+    similarProjects: "Similar Projects",
+    allProjects: "All Projects",
   },
   de: {
     contact: "Kontakt",
@@ -384,5 +390,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     closed: "geschlossen",
     footerCompanyDescription:
       "Spezialisiert auf Metallkonstruktionen, Stahlhäuser und Industrieausrüstung.",
+    similarProjects: "Ähnliche Projekte",
+    allProjects: "Alle Projekte",
   },
 };

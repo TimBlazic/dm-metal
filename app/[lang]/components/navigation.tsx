@@ -1,17 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import LanguageSwitcher from "@/components/language-switcher";
 import { useLanguage } from "@/lib/language-context";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 
 export default function Navigation() {
   const { t } = useLanguage();
   const params = useParams();
   const lang = params.lang as string;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
@@ -79,24 +81,63 @@ export default function Navigation() {
               </Button>
             </Link>
           </nav>
-          <Button variant="outline" size="icon" className="md:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-6 w-6"
-            >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
+          <Button
+            variant="outline"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen
+              ? "max-h-[300px] opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+        >
+          <div className="container py-6 space-y-6 border-t">
+            <Link
+              href={`/${lang}`}
+              className="block text-base font-medium hover:text-red-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("home")}
+            </Link>
+            <Link
+              href={`/${lang}/o-podjetju`}
+              className="block text-base font-medium hover:text-red-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("about")}
+            </Link>
+            <Link
+              href={`/${lang}/reference`}
+              className="block text-base font-medium hover:text-red-600 transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("references")}
+            </Link>
+            <Link
+              href={`/${lang}/kontakt`}
+              onClick={() => setIsMenuOpen(false)}
+              className="block pt-2"
+            >
+              <Button
+                variant="default"
+                className="w-full bg-red-600 hover:bg-red-700 text-base py-6"
+              >
+                {t("inquiry")}
+              </Button>
+            </Link>
+          </div>
         </div>
       </header>
     </>
