@@ -160,7 +160,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
       "Podjetje DM Metal d.o.o. je specializirano za izdelavo jeklenih konstrukcij, fasadnih elementov in strešnih kritin. Z dolgoletnimi izkušnjami in strokovnim znanjem zagotavljamo kakovostne rešitve za naše stranke.",
     aboutCompanyDesc2:
       "Naša ekipa izkušenih strokovnjakov je predana kakovosti, zanesljivosti in inovativnosti pri vsakem projektu, ne glede na njegovo velikost.",
-    readMore: "Več o storitvi",
+    readMore: "Poglej več",
     needSteelConstructions: "Potrebujete kovinske konstrukcije?",
     ctaDescription:
       "Kontaktirajte nas za brezplačno svetovanje in ponudbo. Naša ekipa vam bo pomagala najti optimalno rešitev za vaš projekt.",
@@ -262,8 +262,8 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     aboutCompanyDesc1:
       "DM Metal d.o.o. specializes in the manufacture of steel constructions, facade elements, and roofing. With years of experience and expertise, we provide quality solutions for our customers.",
     aboutCompanyDesc2:
-      "Our team of experienced professionals is committed to quality, reliability, and innovation in every project, regardless of its size.",
-    readMore: "Read More",
+      "Our team of experienced professionals is dedicated to quality, reliability, and innovation in every project, regardless of its size.",
+    readMore: "Learn more",
     needSteelConstructions: "Need Steel Constructions?",
     ctaDescription:
       "Contact us for free consultation and quotation. Our team will help you find the optimal solution for your project.",
@@ -365,9 +365,9 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     aboutCompanyDesc1:
       "DM Metal d.o.o. ist spezialisiert auf die Herstellung von Stahlkonstruktionen, Fassadenelementen und Dacheindeckungen. Mit langjähriger Erfahrung und Fachwissen bieten wir qualitativ hochwertige Lösungen für unsere Kunden.",
     aboutCompanyDesc2:
-      "Unser Team erfahrener Fachleute setzt sich für Qualität, Zuverlässigkeit und Innovation bei jedem Projekt ein, unabhängig von seiner Größe.",
+      "Unser Team erfahrener Fachleute ist der Qualität, Zuverlässigkeit und Innovation bei jedem Projekt verpflichtet, unabhängig von seiner Größe.",
     readMore: "Mehr erfahren",
-    needSteelConstructions: "Benötigen Sie Metallkonstruktionen?",
+    needSteelConstructions: "Benötigen Sie Stahlkonstruktionen?",
     ctaDescription:
       "Kontaktieren Sie uns für eine kostenlose Beratung und ein Angebot. Unser Team hilft Ihnen, die optimale Lösung für Ihr Projekt zu finden.",
     sendInquiry: "Anfrage senden",

@@ -242,7 +242,7 @@ export default function Home() {
                 <p className="text-lg text-gray-700 mb-8">
                   {t("aboutCompanyDesc2")}
                 </p>
-                <Link href="/o-podjetju">
+                <Link href={`/${params.lang}/o-podjetju`}>
                   <Button
                     size="lg"
                     className="bg-red-600 hover:bg-red-700 text-white"

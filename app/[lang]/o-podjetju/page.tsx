@@ -27,7 +27,8 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="py-16 md:py-24">
         <div className="container px-4 md:px-6">
-          <div className="flex gap-12 items-center">
+          {/* Desktop layout */}
+          <div className="hidden md:flex gap-12 items-center">
             <div className="relative h-[300px] w-[300px]">
               <Image
                 src="/dm-metal-logo-2.jpg"
@@ -46,6 +47,26 @@ export default function AboutPage() {
                 objektov ter izvedbi ostalih namenskih gradenj.
               </p>
             </div>
+          </div>
+
+          {/* Mobile layout */}
+          <div className="md:hidden">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="relative h-[60px] w-[60px] flex-shrink-0">
+                <Image
+                  src="/dm-metal-logo-2.jpg"
+                  alt="DM Metal delavnica"
+                  fill
+                  className="object-contain rounded-lg"
+                />
+              </div>
+              <h1 className="text-3xl font-bold">O podjetju DM-Metal</h1>
+            </div>
+            <p className="text-lg text-gray-700 mb-8">
+              Izpolnjujemo zahteve in pričakovanja svojih zahtevnih strank pri
+              projektiranju in postavitvi športnih, skladiščnih in proizvodnih
+              objektov ter izvedbi ostalih namenskih gradenj.
+            </p>
           </div>
         </div>
       </section>
