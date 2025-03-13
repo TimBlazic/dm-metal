@@ -338,7 +338,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/fasadni-elementi"
+                    href={`/${params.lang}/storitve/fasadni-elementi`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("facadeElements")}
@@ -346,7 +346,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/stresne-kritine"
+                    href={`/${params.lang}/storitve/stresne-kritine`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("roofing")}
@@ -354,7 +354,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/jeklene-hise-in-nadstreski"
+                    href={`/${params.lang}/storitve/jeklene-hise-in-nadstreski`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("steelHouses")}
@@ -362,7 +362,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/krovski-program"
+                    href={`/${params.lang}/storitve/krovski-program`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("roofingProgram")}
@@ -370,7 +370,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/projektiranje-in-inzeniring"
+                    href={`/${params.lang}/storitve/projektiranje-in-inzeniring`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("engineering")}
@@ -378,7 +378,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/najem"
+                    href={`/${params.lang}/storitve/najem-opreme`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("equipmentRental")}
@@ -389,16 +389,19 @@ export default function Home() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Hitre povezave</h3>
+              <h3 className="text-lg font-semibold mb-4">{t("quickLinks")}</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/" className="text-zinc-400 hover:text-white">
+                  <Link
+                    href={`/${params.lang}`}
+                    className="text-zinc-400 hover:text-white"
+                  >
                     {t("home")}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/o-podjetju"
+                    href={`/${params.lang}/o-podjetju`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("about")}
@@ -406,7 +409,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/reference"
+                    href={`/${params.lang}/reference`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("references")}
@@ -414,7 +417,7 @@ export default function Home() {
                 </li>
                 <li>
                   <Link
-                    href="/kontakt"
+                    href={`/${params.lang}/kontakt`}
                     className="text-zinc-400 hover:text-white"
                   >
                     {t("contact")}
