@@ -477,9 +477,9 @@ export const servicesData: Record<string, ServiceContent> = {
       },
     ],
   },
-  "stresni-program": {
+  "krovski-program": {
     title: {
-      sl: "Strešni program",
+      sl: "Krovski program",
       en: "Roofing Program",
       de: "Dachprogramm",
     },

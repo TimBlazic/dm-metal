@@ -164,7 +164,7 @@ export default function Home() {
                   title={t("equipmentRental")}
                   description={t("equipmentRentalDesc")}
                   icon="Tool"
-                  link={`/${params.lang}/storitve/najem`}
+                  link={`/${params.lang}/storitve/najem-opreme`}
                   className="sm:col-span-2"
                 />
               </div>
