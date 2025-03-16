@@ -200,7 +200,6 @@ export default function Home() {
                 <div className="text-xl font-medium mb-2 text-white">
                   {t("constructionsBuilt")}
                 </div>
-                <div className="text-base text-gray-400">{t("yearly")}</div>
               </div>
               {/* Izkušnje */}
               <div className="text-center p-8 rounded-2xl bg-gray-900/50">
