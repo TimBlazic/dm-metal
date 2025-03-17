@@ -25,12 +25,14 @@ export default function ReferencePage() {
   const { t } = useLanguage();
   const lang = params.lang as string;
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [filteredProjects, setFilteredProjects] = useState(
+    [...projects].reverse()
+  );
   const [activeCategory, setActiveCategory] = useState("all");
 
   // Funkcija za filtriranje projektov glede na iskalni niz in kategorijo
   const filterProjects = (query: string, category: string) => {
-    let filtered = projects;
+    let filtered = [...projects].reverse();
 
     // Filtriranje po iskalnem nizu
     if (query) {
@@ -40,13 +42,17 @@ export default function ReferencePage() {
           project.title.toLowerCase().includes(searchLower) ||
           project.description.toLowerCase().includes(searchLower) ||
           project.location.toLowerCase().includes(searchLower) ||
-          project.categoryName.toLowerCase().includes(searchLower)
+          project.categoryNames.some((cat) =>
+            cat.toLowerCase().includes(searchLower)
+          )
       );
     }
 
     // Filtriranje po kategoriji
     if (category !== "all") {
-      filtered = filtered.filter((project) => project.category === category);
+      filtered = filtered.filter((project) =>
+        project.categories.includes(category)
+      );
     }
 
     setFilteredProjects(filtered);
@@ -167,7 +173,9 @@ export default function ReferencePage() {
                 <TabsContent key={category.id} value={category.id}>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProjects
-                      .filter((project) => project.category === category.id)
+                      .filter((project) =>
+                        project.categories.includes(category.id)
+                      )
                       .map((project) => (
                         <ProjectCard key={project.id} project={project} />
                       ))}
@@ -216,8 +224,8 @@ interface ProjectCardProps {
     id: number;
     title: string;
     location: string;
-    category: string;
-    categoryName: string;
+    categories: string[];
+    categoryNames: string[];
     description: string;
     image: string;
     year: string;
@@ -240,8 +248,15 @@ function ProjectCard({ project }: ProjectCardProps) {
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
-          {project.categoryName}
+        <div className="absolute top-0 right-0 flex flex-wrap gap-1 p-2">
+          {project.categoryNames.map((categoryName, index) => (
+            <span
+              key={index}
+              className="bg-red-600 text-white px-3 py-1 text-sm font-medium rounded"
+            >
+              {categoryName}
+            </span>
+          ))}
         </div>
       </div>
       <div className="p-6">
