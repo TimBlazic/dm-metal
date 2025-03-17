@@ -478,6 +478,7 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Projektiranje", "Izdelava konstrukcije", "Montaža"],
   },
+  /*
   {
     id: 28,
     title: "Irp sanacija zlote",
@@ -498,6 +499,7 @@ export const projects: Project[] = [
     year: "2024",
     services: ["Projektiranje", "Izdelava konstrukcije", "Montaža"],
   },
+  */
   {
     id: 29,
     title: "Nadstresk privatni investitor",
