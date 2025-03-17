@@ -89,7 +89,7 @@ export default function ProjectsShowcase() {
                   className="object-cover"
                 />
                 <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
-                  {project.categoryName}
+                  {project.categoryNames[0]}
                 </div>
               </div>
               <div className="p-6">
@@ -138,7 +138,7 @@ export default function ProjectsShowcase() {
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
-                            {project.categoryName}
+                            {project.categoryNames[0]}
                           </div>
                         </div>
                         <div className="p-6">

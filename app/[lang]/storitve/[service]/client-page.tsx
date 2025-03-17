@@ -18,7 +18,9 @@ function getRandomProjects(
   onlyFromCategory: boolean = true
 ): Project[] {
   let filteredProjects = onlyFromCategory
-    ? projects.filter((p) => p.category === category && p.id !== excludeId)
+    ? projects.filter(
+        (p) => p.categories.includes(category) && p.id !== excludeId
+      )
     : projects.filter((p) => p.id !== excludeId);
 
   const shuffled = [...filteredProjects].sort(() => 0.5 - Math.random());
@@ -209,7 +211,7 @@ export default function ServicePageClient({
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
-                        {project.categoryName}
+                        {project.categoryNames[0]}
                       </div>
                     </div>
                     <div className="p-4 md:p-6">
@@ -345,7 +347,7 @@ export default function ServicePageClient({
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-medium">
-                    {project.categoryName}
+                    {project.categoryNames[0]}
                   </div>
                 </div>
                 <div className="p-4 md:p-6">
