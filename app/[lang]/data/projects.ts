@@ -343,11 +343,11 @@ export const projects: Project[] = [
     fullDescription:
       "Celovita izvedba jeklene konstrukcije za podjetje Ramuta. Projekt je obsegal vse faze od načrtovanja do končne montaže.",
     client: "EDP d.o.o.",
-    image: "edp/edp2.jpg",
+    image: "edp/edp2.JPG",
     gallery: [
-      "edp/edp2.jpg",
+      "edp/edp2.JPG",
       "edp/edp8.jpeg",
-      "edp/edp3.jpg",
+      "edp/edp3.JPG",
       "edp/edp5.jpeg",
       "edp/edp6.jpeg",
       "edp/edp7.jpeg",
