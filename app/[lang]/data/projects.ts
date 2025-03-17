@@ -513,7 +513,7 @@ export const projects: Project[] = [
       "nadstresek-privatni/nadstresk-privstni-investitor1.jpg",
       "nadstresek-privatni/nadstresk-privstni-investitor2.jpg",
       "nadstresek-privatni/nadstresk-privstni-investitor4.jpg",
-      "nadstreesk-privatni/nadstresk-privstni-investitor6.jpg",
+      "nadstresek-privatni/nadstresk-privstni-investitor6.jpg",
       "nadstresek-privatni/nadstresk-privstni-investitor7.jpg",
     ],
     year: "2024",

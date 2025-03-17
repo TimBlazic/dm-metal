@@ -204,13 +204,15 @@ export default function ReferencePage() {
             Kontaktirajte nas za brezplačno svetovanje in ponudbo. Naša ekipa
             vam bo pomagala najti optimalno rešitev za vaš projekt.
           </p>
-          <Button
-            size="lg"
-            variant="outline"
-            className="bg-white text-red-600 hover:bg-white/90"
-          >
-            Pošljite povpraševanje
-          </Button>
+          <Link href={`/${lang}/kontakt`}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-white text-red-600 hover:bg-white/90"
+            >
+              Pošljite povpraševanje
+            </Button>
+          </Link>
         </div>
       </section>
 
